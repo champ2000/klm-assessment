@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<div class="flex justify-center">
+
+  <div
+    class="p-6 w-full md:w-1/2 lg:w-1/2"
+    *ngIf="bookingData">
+    <mat-icon
+      aria-hidden="false"
+      [routerLink]="['/login']"
+      class="inline mt-1 cursor-pointer">
+      chevron_left
+    </mat-icon>
+    <div class="inline-block h-12 align-middle text-right">
+      <span class="text-xl mt-1 text-right">Welcome {{ customerName }}</span>
+    </div>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p class="text-xl pt-2">{{ bookingCode }}</p>
+        </mat-panel-title>
+        <mat-panel-description>Your flight to {{ destination }}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <div *ngFor="let connection of bookingData?.itinerary?.connections">
+          <div *ngFor="let segments of connection.segments">
+            <div class="flex">
+              <div class="flex-none w-14">
+                <div class="w-3 h-3 rounded-full bg-klm-blue relative"></div>
+                <div class="w-0.5 h-44 ml-[5px] bg-klm-blue"></div>
+                <div class="w-3 h-3 rounded-full bg-klm-blue relative"></div>
+              </div>
+              <div class="flex-1">
+                <span class="text-gray-500 block">{{
+                segments.marketingFlight.operatingFlight.localScheduledDeparture | date: 'd/M/yy'
+                }}</span>
+                <span class="font-bold block">{{ segments.marketingFlight.operatingFlight.localScheduledDeparture | date:
+                'shortTime' }}
+                {{ segments.departFrom.city.name }}, {{ segments.departFrom.city.country.name }}</span>
+                <span class="text-gray-500 block">Flight Number {{ segments.marketingFlight.operatingFlight.number}}</span>
+                <span class="text-gray-500 block">Flight Duration {{ connection.duration }} minutes</span>
+                {{ segments.marketingFlight.operatingFlight.carrier.name }}
+                <span
+                  class="inline"
+                  *ngIf="segments.marketingFlight.operatingFlight.carrier.name === 'KLM'">Operated By<img
+                    class="inline w-12 h-8"
+                    src="/assets/klm-logo.png"></span>
+                <div class="absolute bottom-1 pb-2">
+                  <span class="text-gray-500 block">{{
+                  segments.marketingFlight.operatingFlight.localScheduledArrival | date: 'd/M/yy'
+                  }}</span>
+                  <span class="font-bold block">{{ segments.marketingFlight.operatingFlight.localScheduledArrival | date:
+                  'shortTime' }}
+                  {{ segments.arriveOn.city.name }}, {{ segments.arriveOn.city.country.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </div>
+</div>

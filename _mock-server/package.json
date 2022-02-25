@@ -1,0 +1,16 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "description": "mock graphqlserver for KLM assessment",
+  "main": "server.jd",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Chris Hampton",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.6.3",
+    "cors": "^2.8.5",
+    "graphql": "^16.3.0"
+  }
+}

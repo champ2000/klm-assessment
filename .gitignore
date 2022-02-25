@@ -1,0 +1,13 @@
+# dependencies
+node_modules
+_mock-server/node_modules
+
+# misc
+npm-debug.log
+.angular
+/package-lock.json
+
+# System Files
+.DS_Store
+Thumbs.db
+.vscode/settings.json
