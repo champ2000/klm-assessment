@@ -1,10 +1,8 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const cors = require('cors');
-const { ApolloServer, gql } = require('apollo-server');
+const fs = require("fs");
+const path = require("path");
+const { ApolloServer, gql } = require("apollo-server");
 
-let fileImport = fs.readFileSync(path.resolve(__dirname, 'mock.json'));
+const fileImport = fs.readFileSync(path.resolve(__dirname, "mock.json"));
 let mockData = JSON.parse(fileImport);
 
 const typeDefs = gql`
