@@ -153,10 +153,9 @@ const resolvers = {
     retrieveBooking(parent, args, context, info) {
       const bookingCode = args.bookingCode;
       const lastName = args.lastName;
-      const response = mockData.filter(
+      return mockData.filter(
         (a) => a.bookingCode == bookingCode && a.passengers.lastName == lastName
       )[0];
-      return response;
     },
   },
 };
