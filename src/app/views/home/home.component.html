@@ -1,7 +1,5 @@
 <app-header></app-header>
-
 <div class="flex justify-center">
-
   <div
     class="p-6 w-full md:w-1/2 lg:w-1/2"
     *ngIf="bookingData">
@@ -15,8 +13,8 @@
       <span class="text-xl mt-1 text-right">Welcome {{ customerName }}</span>
     </div>
     <mat-expansion-panel
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
+      (opened)="panelOpenState"
+      (closed)="!panelOpenState">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <p class="text-xl pt-2">{{ bookingCode }}</p>
@@ -36,8 +34,7 @@
                 <span class="text-gray-500 block">{{
                 segments.marketingFlight.operatingFlight.localScheduledDeparture | date: 'd/M/yy'
                 }}</span>
-                <span class="font-bold block">{{ segments.marketingFlight.operatingFlight.localScheduledDeparture | date:
-                'shortTime' }}
+                <span class="font-bold block">{{ segments.marketingFlight.operatingFlight.localScheduledDeparture | date:'shortTime' }}
                 {{ segments.departFrom.city.name }}, {{ segments.departFrom.city.country.name }}</span>
                 <span class="text-gray-500 block">Flight Number {{ segments.marketingFlight.operatingFlight.number}}</span>
                 <span class="text-gray-500 block">Flight Duration {{ connection.duration }} minutes</span>
@@ -49,10 +46,8 @@
                     src="/assets/klm-logo.png"></span>
                 <div class="absolute bottom-1 pb-2">
                   <span class="text-gray-500 block">{{
-                  segments.marketingFlight.operatingFlight.localScheduledArrival | date: 'd/M/yy'
-                  }}</span>
-                  <span class="font-bold block">{{ segments.marketingFlight.operatingFlight.localScheduledArrival | date:
-                  'shortTime' }}
+                  segments.marketingFlight.operatingFlight.localScheduledArrival | date: 'd/M/yy'}}</span>
+                  <span class="font-bold block">{{ segments.marketingFlight.operatingFlight.localScheduledArrival | date:'shortTime' }}
                   {{ segments.arriveOn.city.name }}, {{ segments.arriveOn.city.country.name }}</span>
                 </div>
               </div>
